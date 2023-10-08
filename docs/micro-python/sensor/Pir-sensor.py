@@ -25,5 +25,5 @@ while True:
         led.value(0) # Turn on LED
         sleep(5) # Wait for 5 seconds
         led.value(1) # Turn off LED
-        print('Motion stopped!')
         motion = False # Reset motion detection flag
+        print('Motion stopped!')
