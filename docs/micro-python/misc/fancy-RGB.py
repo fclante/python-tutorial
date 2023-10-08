@@ -1,83 +1,39 @@
-# fancy-RGB.py
-import machine, neopixel
+import machine
+import neopixel
 import time
-n = 8 # Number of neopixels
-p = 4 # GPIO4 (NodeMCU pin D2)
-np = neopixel.NeoPixel(machine.Pin(p), n) # Set Neopixel-mode on GPIO4
 
-# Run with rgbdemo(np)
+# Set the number of neopixels and the GPIO pin to use
+num_pixels = 8
+gpio_pin = 4
 
-def rgbdemo(np):
-    n = np.n
+# Create a NeoPixel object on the specified pin
+neo_pixel = neopixel.NeoPixel(machine.Pin(gpio_pin), num_pixels)
 
-    # cycle red
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 0)
-        np[i % n] = (255, 0, 0)
-        np.write()
-        time.sleep_ms(50)
+# Run the RGB demo
+def rgbdemo(neo_pixel):
+    # Get the number of neopixels
+    num_pixels = neo_pixel.n
 
-    # cycle green
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 0)
-        np[i % n] = (0, 255, 0)
-        np.write()
-        time.sleep_ms(50)
+    # Cycle through red, green, and blue
+    for color in [(255, 0, 0), (0, 255, 0), (0, 0, 255)]:
+        for i in range(4 * num_pixels):
+            for pixel in range(num_pixels):
+                neo_pixel[pixel] = (0, 0, 0)
+            neo_pixel[i % num_pixels] = color
+            neo_pixel.write()
+            time.sleep_ms(50)
 
-    # cycle blue
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 0)
-        np[i % n] = (0, 0, 255)
-        np.write()
-        time.sleep_ms(50)
-
-    # bounce red
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (64, 0, 0)
-        if (i // n) % 2 == 0:
-            np[i % n] = (0, 0, 0)
-        else:
-            np[n - 1 - (i % n)] = (0, 0, 0)
-        np.write()
-        time.sleep_ms(100)
-
-    # bounce green
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 64, 0)
-        if (i // n) % 2 == 0:
-            np[i % n] = (0, 0, 0)
-        else:
-            np[n - 1 - (i % n)] = (0, 0, 0)
-        np.write()
-        time.sleep_ms(100)
-
-    # bounce blue
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 64)
-        if (i // n) % 2 == 0:
-            np[i % n] = (0, 0, 0)
-        else:
-            np[n - 1 - (i % n)] = (0, 0, 0)
-        np.write()
-        time.sleep_ms(100)
-
-    # fade in/out
-    for i in range(0, 10 * 256, 8):
-        for j in range(n):
-            if (i // 256) % 2 == 0:
-                val = i & 0xff
+    # Bounce red, green, and blue
+    for color in [(64, 0, 0), (0, 64, 0), (0, 0, 64)]:
+        for i in range(4 * num_pixels):
+            for pixel in range(num_pixels):
+                neo_pixel[pixel] = color
+            if (i // num_pixels) % 2 == 0:
+                neo_pixel[i % num_pixels] = (0, 0, 0)
             else:
-                val = 255 - (i & 0xff)
-            np[j] = (val, val, val)
-        np.write()
+                neo_pixel[num_pixels - 1 - (i % num_pixels)] = (0, 0, 0)
+            neo_pixel.write()
+            time.sleep_ms(100)
 
-    # clear
-    for i in range(n):
-        np[i] = (0, 0, 0)
-    np.write()
+# Call the RGB demo function with the NeoPixel object
+rgbdemo(neo_pixel)
