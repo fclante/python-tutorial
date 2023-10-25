@@ -25,5 +25,6 @@ hello("Mikkel")
 
 # output er "Hello Mikkel"
 ```
-
+---
 [tilbage](/README.md)
+

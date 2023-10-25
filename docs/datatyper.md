@@ -36,4 +36,6 @@ List er en samling af data. F.eks. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 
+---
 [tilbage](/README.md)
+

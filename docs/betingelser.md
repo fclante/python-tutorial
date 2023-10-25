@@ -43,4 +43,6 @@ else:
     print("10 er ikke mindre end eller lig med 5")
 ```
 
+---
 [tilbage](/README.md)
+

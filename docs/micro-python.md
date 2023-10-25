@@ -4,4 +4,5 @@ MicroPython er en version af Python, der er optimeret til at køre på små comp
 
 [MicroPython](https://micropython.org/)
 
+---
 [tilbage](/README.md)

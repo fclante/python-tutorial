@@ -5,4 +5,5 @@ Det er et program, der bruges til at teste, om programmeringssproget er installe
 
 [Se eksempel](https://crumb.sh/6FPiVq8p6J2)
 
+---
 [tilbage](/README.md)

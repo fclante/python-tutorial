@@ -10,6 +10,9 @@ Thonny er et IDE (Integrated Development Environment) til Python. Det er et prog
 
 > Download til Windows, Linux eller Mac OS X
 
-[Thonny](https://thonny.org/)
+Download filen via linket herunder og kør den (Dobbeltklik på filen) og følg instruktionerne på skærmen.
 
+[Download Thonny](https://thonny.org/)
+
+---
 [tilbage](/README.md)

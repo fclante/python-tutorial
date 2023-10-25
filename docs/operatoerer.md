@@ -88,4 +88,5 @@ De logiske operatorer er:
 not 1 == 1 # False
 ```
 
+---
 [tilbage](/README.md)
